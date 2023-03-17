@@ -758,7 +758,7 @@ while cont is True:
         desired_caps['appActivity'] = 'com.facebook.lite.MainActivity'
         desired_caps['systemPort'] = random.randint(6000, 8299)
         desired_caps['noReset'] = True
-        desired_caps['app'] = 'storage/apk/InstagramLite.apk'
+        desired_caps['app'] = 'InstagramLite.apk'
 
         driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
