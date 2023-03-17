@@ -1,5 +1,33 @@
 import time
+import requests
+import hashlib
 import subprocess
+
+# URL do arquivo no seu repositório GitHub
+url = 'https://raw.githubusercontent.com/wnx3/bot_emu/main/CREATOR.py'
+
+# Caminho local do seu arquivo Python
+local_path = '.py'
+
+# Obtenha a última versão do arquivo do GitHub
+response = requests.get(url)
+github_version = response.content.decode('utf-8')
+
+# Verifique se o arquivo local tem a mesma versão do GitHub
+with open(local_path, 'r', encoding='utf-8') as f:
+    local_version = f.read()
+
+local_hash = hashlib.sha256(local_version.encode()).hexdigest()
+github_hash = hashlib.sha256(github_version.encode()).hexdigest()
+
+if local_hash != github_hash:
+    # Baixe a nova versão do GitHub e salve-a localmente
+    with open(local_path, 'w', encoding='utf-8') as f:
+        f.write(github_version)
+    print("BOT atualizado.\nIniciando...")
+    time.sleep(5)
+else:
+    pass
 
 try:
     from faker import Faker
@@ -15,7 +43,7 @@ except ModuleNotFoundError:
 
 # Aqui vai o restante do código que depende do pacote numpy
 
-    
+
 import os
 import random
 from datetime import datetime
@@ -923,3 +951,4 @@ while cont is True:
         subprocess.run(f'adb -s 127.0.0.1:{porta} uninstall io.appium.uiautomator2.server', stdout=subprocess.DEVNULL,
                        stderr=subprocess.DEVNULL, shell=True)
         print('Algum erro não catalogado encontrado.\n-----------------------------------\n')
+
