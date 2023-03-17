@@ -43,7 +43,9 @@ except ModuleNotFoundError:
 
 # Aqui vai o restante do código que depende do pacote numpy
 
-
+from rich.console import Console
+from rich.panel import Panel
+from rich.text import Text
 import os
 import random
 from datetime import datetime
@@ -51,8 +53,6 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import string
-import sys
-
 from appium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -691,7 +691,7 @@ def firts_reg():
                 arquivo.write(email + '\n' + user_completo + '\n' + senha + "\n\n")
                 WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH,
                                                                                   '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[10]/android.view.View'))).click()
-
+                count += 1
                 sms = False
                 break
             else:
@@ -723,6 +723,10 @@ arquivo = open('configuracoes/contas/senha_perfis.txt')
 senha = arquivo.read()
 print(f'Senha sendo utilizada: {senha}\n')
 
+console = Console()
+
+count = 0
+
 device = [
     {'name': 'Bluestacks1', 'port': porta, 'udid': f'127.0.0.1:{porta}'},
 ]
@@ -742,7 +746,11 @@ subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id',
                stderr=subprocess.DEVNULL)
 cont = True
 while cont is True:
-
+    # atualiza o texto de contagem
+    count_text = Text("CONTAS CRIADAS: " + str(count))
+    panel = Panel(count_text, title="", style="bold")
+    console.print(panel, highlight=False)
+    count += 1
     print('\n-----------------------------------\nIniciando criação')
     # with open("storage/apk/caminho.txt", "r") as arquivo:
     #    appinsta = arquivo.read().strip()
@@ -916,6 +924,7 @@ while cont is True:
                     arquivo.write(email + '\n' + user_completo + '\n' + senha + "\n\n")
                     WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,
                                                                                 '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[10]'))).click()
+                    count += 1
                     sms = False
 
                 else:
