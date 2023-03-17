@@ -752,8 +752,8 @@ while cont is True:
     console.print(panel, highlight=False)
     count += 1
     print('\n-----------------------------------\nIniciando criação')
-    # with open("storage/apk/caminho.txt", "r") as arquivo:
-    #    appinsta = arquivo.read().strip()
+    with open("storage/apk/caminho.txt", "r") as arquivo:
+       appinsta = arquivo.read().strip()
     try:
         time.sleep(10)
         quantidade = 0
@@ -766,7 +766,7 @@ while cont is True:
         desired_caps['appActivity'] = 'com.facebook.lite.MainActivity'
         desired_caps['systemPort'] = random.randint(6000, 8299)
         desired_caps['noReset'] = True
-        desired_caps['app'] = 'InstagramLite'
+        desired_caps['app'] = appinsta
 
         driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
