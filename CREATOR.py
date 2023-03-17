@@ -8,7 +8,7 @@ except ModuleNotFoundError:
     import subprocess
     import sys
     print('Instalando dependências...')
-    subprocess.call(['pip', 'install', '-r', 'lib/tcl8.6/msgs/requirements.txt'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.call(['pip', 'install', '-r', 'requirements.txt'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     from faker import Faker
 
