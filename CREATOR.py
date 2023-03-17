@@ -747,7 +747,7 @@ subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id',
 cont = True
 while cont is True:
     # atualiza o texto de contagem
-    count_text = Text("CONTAS CRIADAS: " + str(count))
+    count_text = Text("CONTAS CRIADAS: ", style="bold") + Text(str(count), style="bold green")
     panel = Panel(count_text, title="", style="bold")
     console.print(panel, highlight=False)
     print('\n-----------------------------------\nIniciando criação')
