@@ -24,13 +24,10 @@ if local_hash != github_hash:
     # Baixe a nova versão do GitHub e salve-a localmente
     with open(local_path, 'w', encoding='utf-8') as f:
         f.write(github_version)
-    print("BOT atualizado.\nAbra novamente.")
+    print("BOT atualizado.\nAbra novamente o bot.")
     time.sleep(5)
 else:
     pass
-print('teste 2')
-import time
-import subprocess
 
 try:
     from faker import Faker
