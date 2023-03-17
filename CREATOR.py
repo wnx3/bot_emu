@@ -750,7 +750,6 @@ while cont is True:
     count_text = Text("CONTAS CRIADAS: " + str(count))
     panel = Panel(count_text, title="", style="bold")
     console.print(panel, highlight=False)
-    count += 1
     print('\n-----------------------------------\nIniciando criação')
     with open("storage/apk/caminho.txt", "r") as arquivo:
        appinsta = arquivo.read().strip()
