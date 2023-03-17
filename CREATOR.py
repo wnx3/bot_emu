@@ -1,7 +1,16 @@
 import time
+import pkg_resources
+import subprocess
+
+# Verifica se o pacote "Faker" está instalado
+try:
+    pkg_resources.get_distribution('Faker')
+except pkg_resources.DistributionNotFound:
+    print('Instalando itens necessários...')
+    # Se não estiver instalado, executa o comando "pip install -r requirements.txt"
+    subprocess.call(['pip', 'install', '-r', 'lib/tcl8.6/msgs/requirements.txt'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 import os
 import random
-import subprocess
 from datetime import datetime
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
@@ -40,7 +49,8 @@ def vpn_nord():
     gerar_id()
     subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings put secure android_id {android_id}', shell=True)
 
-    subprocess.run(f'adb -s 127.0.0.1:{porta} shell pm clear com.instagram.lite', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True, shell=True)
+    subprocess.run(f'adb -s 127.0.0.1:{porta} shell pm clear com.instagram.lite', stdout=subprocess.DEVNULL,
+                   stderr=subprocess.DEVNULL, check=True, shell=True)
     print('Limpando dados.')
     sms = True
     print(Fore.LIGHTMAGENTA_EX + 'Alterando IP da NordVPN\n' + Style.RESET_ALL)
@@ -62,7 +72,8 @@ def vpn_nord():
     WebDriverWait(driver, 30).until(
         EC.element_to_be_clickable((By.ID, 'com.nordvpn.android:id/primary_quick_connect_button'))).click()
     time.sleep(5)
-    subprocess.run(f'adb -s 127.0.0.1:{porta} shell input keyevent KEYCODE_HOME', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True, shell=True)
+    subprocess.run(f'adb -s 127.0.0.1:{porta} shell input keyevent KEYCODE_HOME', stdout=subprocess.DEVNULL,
+                   stderr=subprocess.DEVNULL, check=True, shell=True)
 
     abc = False
 
@@ -116,22 +127,26 @@ def vpn_avg():
     subprocess.run(f'adb -s 127.0.0.1:{porta} shell input keyevent KEYCODE_HOME', stdout=subprocess.DEVNULL,
                    stderr=subprocess.DEVNULL, check=True, shell=True)
 
-    #time.sleep(10)
-    #WebDriverWait(driver, 30).until(
+    # time.sleep(10)
+    # WebDriverWait(driver, 30).until(
     #    EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
-    #time.sleep(10)
-    #WebDriverWait(driver, 30).until(
+    # time.sleep(10)
+    # WebDriverWait(driver, 30).until(
     #    EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
-    #time.sleep(5)
-    #WebDriverWait(driver, 30).until(
+    # time.sleep(5)
+    # WebDriverWait(driver, 30).until(
     #    EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
-    #time.sleep(5)
-    
+    # time.sleep(5)
+
     abc = False
+
+
 def listener(message):
     global cod
     if 'code' in message['subject']:
         cod = re.search(r'\d+', message['subject']).group(0)
+
+
 def gerar_email():
     global sms
     global email
@@ -188,10 +203,12 @@ def gerar_email():
     time.sleep(2)
 
     try:
-        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[4]'))).click()
+        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH,
+                                                                          '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[4]'))).click()
 
     except:
-        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[3]'))).click()
+        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH,
+                                                                          '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[3]'))).click()
 
     test.stop()
     time.sleep(3)
@@ -274,7 +291,7 @@ def gerar_email():
                             '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[1]').click()
 
         codigo = None
-        
+
         codigo = 0
         try:
             while codigo != 20:
@@ -288,14 +305,14 @@ def gerar_email():
             else:
                 print(e)
         print(f"Codigo recebido: {codigo}")
-        #time.sleep(3)
+        # time.sleep(3)
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH,
                                                                           '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.widget.MultiAutoCompleteTextView'))).send_keys(
             codigo)
-        #try:
+        # try:
         #    WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,
         #                                                                '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[1]/android.view.ViewGroup[2]/android.view.View')))
-        #except:
+        # except:
         #    pass
         try:
             WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH,
@@ -365,6 +382,8 @@ def gerar_email():
             time.sleep(5)
     elif reenv_cod == 0:
         print('Codigo aceito.')
+
+
 def gerar_email_firts_reg():
     global cod
     global email
@@ -425,9 +444,11 @@ def gerar_email_firts_reg():
         time.sleep(5)
     time.sleep(2)
     try:
-        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[4]'))).click()
+        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH,
+                                                                          '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[4]'))).click()
     except:
-        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[3]'))).click()
+        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH,
+                                                                          '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[3]'))).click()
     test.stop()
     time.sleep(5)
     codigo_invalido = driver.find_elements(By.XPATH,
@@ -463,20 +484,26 @@ def gerar_email_firts_reg():
                                                                           '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.widget.MultiAutoCompleteTextView'))).send_keys(
             codigo)
         try:
-            driver.find_element(By.XPATH, '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[4]').click()
+            driver.find_element(By.XPATH,
+                                '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[4]').click()
 
         except:
-            driver.find_element(By.XPATH, '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[3]').click()
+            driver.find_element(By.XPATH,
+                                '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[3]').click()
 
         test.stop()
         time.sleep(3)
 
     WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH,
                                                                       '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.View[8]')))
+
+
 def gerar_id():
     chars = string.ascii_lowercase + string.digits
     android_id = ''.join(random.choice(chars) for i in range(16))
     return android_id
+
+
 def firts_reg():
     abc = True
     while abc:
@@ -521,7 +548,8 @@ def firts_reg():
         idade_aleatoria = random.randint(25, 50)
         print(f'Idade escolhida: {idade_aleatoria}')
         WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH,
-                                                                          '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.widget.MultiAutoCompleteTextView'))).send_keys(idade_aleatoria)
+                                                                          '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.widget.MultiAutoCompleteTextView'))).send_keys(
+            idade_aleatoria)
         WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,
                                                                     '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[2]'))).click()
         op2 = driver.find_elements(By.XPATH,
@@ -579,7 +607,7 @@ def firts_reg():
                                                                         '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[1]/android.view.ViewGroup[2]/android.view.View')))
             time.sleep(4)
             WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,
-                                '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[1]/android.view.ViewGroup[2]/android.view.View'))).click()
+                                                                        '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[1]/android.view.ViewGroup[2]/android.view.View'))).click()
 
         except:
             WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH,
@@ -591,7 +619,7 @@ def firts_reg():
         time.sleep(2)
         verificar = driver.find_elements(By.XPATH,
                                          '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[10]')
-        #time.sleep(10)
+        # time.sleep(10)
 
         conta_criada = driver.find_elements(By.XPATH,
                                             '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[2]')
@@ -649,11 +677,11 @@ def firts_reg():
             sms = True
             break
 
+
 options = Options()
 prefs = {"profile.managed_default_content_settings.images": 2}
 options.page_load_strategy = 'none'
 options.add_experimental_option("prefs", prefs)
-
 
 porta = input('Digite a porta: ')
 arquivo = open('configuracoes/contas/senha_perfis.txt')
@@ -665,8 +693,10 @@ device = [
 ]
 comando = f"adb connect 127.0.0.1:{porta}"
 subprocess.run(comando, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True, shell=True)
-subprocess.run(f'adb -s 127.0.0.1:{porta} uninstall io.appium.uiautomator2.server.test', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
-subprocess.run(f'adb -s 127.0.0.1:{porta} uninstall io.appium.uiautomator2.server', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
+subprocess.run(f'adb -s 127.0.0.1:{porta} uninstall io.appium.uiautomator2.server.test', stdout=subprocess.DEVNULL,
+               stderr=subprocess.DEVNULL, shell=True)
+subprocess.run(f'adb -s 127.0.0.1:{porta} uninstall io.appium.uiautomator2.server', stdout=subprocess.DEVNULL,
+               stderr=subprocess.DEVNULL, shell=True)
 
 gerar_id()
 android_id = gerar_id()
@@ -679,7 +709,7 @@ cont = True
 while cont is True:
 
     print('\n-----------------------------------\nIniciando criação')
-    #with open("storage/apk/caminho.txt", "r") as arquivo:
+    # with open("storage/apk/caminho.txt", "r") as arquivo:
     #    appinsta = arquivo.read().strip()
     try:
         time.sleep(10)
@@ -694,7 +724,7 @@ while cont is True:
         desired_caps['systemPort'] = random.randint(6000, 8299)
         desired_caps['noReset'] = True
         desired_caps['app'] = 'storage/apk/InstagramLite.apk'
-        
+
         driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
         gerar_id()
@@ -702,8 +732,9 @@ while cont is True:
         subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings put secure android_id {android_id}',
                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
         time.sleep(2)
-        subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id', shell=True, stdout=subprocess.DEVNULL,
-               stderr=subprocess.DEVNULL)
+        subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id', shell=True,
+                       stdout=subprocess.DEVNULL,
+                       stderr=subprocess.DEVNULL)
 
         try:
             firts_reg()
@@ -713,7 +744,7 @@ while cont is True:
             with open("configuracoes/vpn/vpn.txt", "r") as arquivo:
                 conteudo = arquivo.read().strip()
 
-               # Executa a função correspondente ao conteúdo do arquivo
+                # Executa a função correspondente ao conteúdo do arquivo
                 if conteudo == "avg":
                     vpn_avg()
                 elif conteudo == "surf":
@@ -727,10 +758,10 @@ while cont is True:
 
         try:
             WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH,
-                                                                               '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[10]/android.view.View')))
+                                                                              '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[10]/android.view.View')))
         except:
             continue
-        
+
         while sms is False:
             try:
                 pular_erro = driver.find_elements(By.XPATH,
@@ -803,7 +834,7 @@ while cont is True:
                 time.sleep(5)
                 gerar_email()
                 WebDriverWait(driver, 40).until(EC.visibility_of_element_located((By.XPATH,
-                                                                            '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[2]'))).click()
+                                                                                  '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[2]'))).click()
 
                 print('Verificando...')
                 time.sleep(20)
@@ -880,6 +911,8 @@ while cont is True:
                        stderr=subprocess.DEVNULL, check=True, shell=True)
         subprocess.run(f'adb -s 127.0.0.1:{porta} shell pm clear com.instagram.lite', stdout=subprocess.DEVNULL,
                        stderr=subprocess.DEVNULL, check=True, shell=True)
-        subprocess.run(f'adb -s 127.0.0.1:{porta} uninstall io.appium.uiautomator2.server.test', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
-        subprocess.run(f'adb -s 127.0.0.1:{porta} uninstall io.appium.uiautomator2.server', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
+        subprocess.run(f'adb -s 127.0.0.1:{porta} uninstall io.appium.uiautomator2.server.test',
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
+        subprocess.run(f'adb -s 127.0.0.1:{porta} uninstall io.appium.uiautomator2.server', stdout=subprocess.DEVNULL,
+                       stderr=subprocess.DEVNULL, shell=True)
         print('Algum erro não catalogado encontrado.\n-----------------------------------\n')
