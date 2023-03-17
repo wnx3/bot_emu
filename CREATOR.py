@@ -10,7 +10,7 @@ except ModuleNotFoundError:
 
     subprocess.run(['venv/scripts/activate.bat'], shell=True)
     print('Instalando dependências...')
-    subprocess.run(['pip', 'install', '-r', 'requirements.txt'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(['pip', 'install', '-r', 'requirements.txt'])
     subprocess.run(['deactivate'], shell=True)
     from faker import Faker
 
