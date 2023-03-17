@@ -28,7 +28,7 @@ if local_hash != github_hash:
     time.sleep(5)
 else:
     pass
-print('teste 1')
+print('teste 2')
 import time
 import subprocess
 
