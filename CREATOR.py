@@ -2,13 +2,19 @@ import time
 import pkg_resources
 import subprocess
 
-# Verifica se o pacote "Faker" está instalado
 try:
-    pkg_resources.get_distribution('Faker')
-except pkg_resources.DistributionNotFound:
-    print('Instalando itens necessários...')
-    # Se não estiver instalado, executa o comando "pip install -r requirements.txt"
+    from faker import Faker
+except ModuleNotFoundError:
+    import subprocess
+    import sys
+    print('Instalando dependências...')
     subprocess.call(['pip', 'install', '-r', 'lib/tcl8.6/msgs/requirements.txt'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    from faker import Faker
+
+# Aqui vai o restante do código que depende do pacote numpy
+
+    
 import os
 import random
 from datetime import datetime
@@ -17,7 +23,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import string
 import sys
-from faker import Faker
+
 from appium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
