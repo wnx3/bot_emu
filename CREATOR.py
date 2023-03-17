@@ -18,7 +18,7 @@ from colorama import init, Fore, Back, Style
 from mailtm import Email
 import re
 import logging
-print('testewwwwww')
+print('testewww')
 logger = logging.getLogger(__name__)
 
 handler = logging.FileHandler('log.txt')
