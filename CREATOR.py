@@ -18,9 +18,12 @@ from colorama import init, Fore, Back, Style
 from mailtm import Email
 import re
 import logging
+
 logger = logging.getLogger(__name__)
+
 handler = logging.FileHandler('log.txt')
 handler.setLevel(logging.ERROR)
+
 logger.addHandler(handler)
 
 username = os.getenv('USERNAME')
@@ -676,8 +679,8 @@ cont = True
 while cont is True:
 
     print('\n-----------------------------------\nIniciando criação')
-    with open("storage/apk/caminho.txt", "r") as arquivo:
-        appinsta = arquivo.read().strip()
+    #with open("storage/apk/caminho.txt", "r") as arquivo:
+    #    appinsta = arquivo.read().strip()
     try:
         time.sleep(10)
         quantidade = 0
@@ -690,7 +693,7 @@ while cont is True:
         desired_caps['appActivity'] = 'com.facebook.lite.MainActivity'
         desired_caps['systemPort'] = random.randint(6000, 8299)
         desired_caps['noReset'] = True
-        desired_caps['app'] = appinsta
+        desired_caps['app'] = 'storage/apk/InstagramLite.apk'
         
         driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
