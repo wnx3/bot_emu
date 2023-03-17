@@ -19,7 +19,6 @@ from mailtm import Email
 import re
 import logging
 logger = logging.getLogger(__name__)
-print('teste')
 handler = logging.FileHandler('log.txt')
 handler.setLevel(logging.ERROR)
 
