@@ -21,7 +21,7 @@ import logging
 logger = logging.getLogger(__name__)
 handler = logging.FileHandler('log.txt')
 handler.setLevel(logging.ERROR)
-
+print('teste2')
 logger.addHandler(handler)
 
 username = os.getenv('USERNAME')
