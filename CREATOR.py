@@ -7,7 +7,7 @@ import subprocess
 url = 'https://raw.githubusercontent.com/wnx3/bot_emu/main/CREATOR.py'
 
 # Caminho local do seu arquivo Python
-local_path = '.py'
+local_path = 'CREATOR.py'
 
 # Obtenha a última versão do arquivo do GitHub
 response = requests.get(url)
