@@ -7,9 +7,11 @@ try:
 except ModuleNotFoundError:
     import subprocess
     import sys
-    print('Instalando dependências...')
-    subprocess.call(['pip', 'install', '-r', 'requirements.txt'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
+    subprocess.run(['venv/scripts/activate.bat'], shell=True)
+    print('Instalando dependências...')
+    subprocess.run(['pip', 'install', '-r', 'requirements.txt'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(['deactivate'], shell=True)
     from faker import Faker
 
 # Aqui vai o restante do código que depende do pacote numpy
