@@ -1,5 +1,4 @@
 import time
-import pkg_resources
 import subprocess
 
 try:
