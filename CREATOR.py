@@ -28,7 +28,7 @@ if local_hash != github_hash:
     # Baixe a nova versão do GitHub e salve-a localmente
     with open(local_path, 'w', encoding='utf-8') as f:
         f.write(github_version)
-    console.print("BOT atualizado :white_check_mark:.\nAbra novamente o bot.", style="bold green")
+    console.print("BOT atualizado.\nAbra novamente o bot.", style="bold green")
     time.sleep(100)
 else:
     pass
@@ -671,7 +671,7 @@ def firts_reg():
 
         try:
             if len(verificar) == 1:
-                console.print('Conta criada com sucesso. :heart_eyes:', console.emoji("heart_eyes"), style='bold green')
+                console.print('Conta criada com sucesso.', style='bold green')
                 now = datetime.now()
                 timestamp = now.strftime("%d/%m/%Y %H:%M:%S")
                 creds = Credentials.from_authorized_user_file('token.json', SCOPES)
@@ -908,7 +908,7 @@ while cont is True:
                                                                                    '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[11]'))).click()
                     except:
                         pass
-                    console.print('Conta criada com sucesso. :heart_eyes:', console.emoji("heart_eyes"), style='bold green')
+                    console.print('Conta criada com sucesso.', style='bold green')
 
                     now = datetime.now()
                     timestamp = now.strftime("%d/%m/%Y %H:%M:%S")
