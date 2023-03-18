@@ -672,7 +672,7 @@ def firts_reg():
 
         try:
             if len(verificar) == 1:
-                print('[green][bold]Conta criada com sucesso.[/bold][/green] :heart_eyes:')
+                console.print('Conta criada com sucesso. :heart_eyes:', style='bold green')
                 now = datetime.now()
                 timestamp = now.strftime("%d/%m/%Y %H:%M:%S")
                 creds = Credentials.from_authorized_user_file('token.json', SCOPES)
@@ -909,7 +909,7 @@ while cont is True:
                                                                                    '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[11]'))).click()
                     except:
                         pass
-                    print('[green][bold]Conta criada com sucesso.[/bold][/green] :heart_eyes:')
+                    console.print('Conta criada com sucesso. :heart_eyes:', style='bold green')
 
                     now = datetime.now()
                     timestamp = now.strftime("%d/%m/%Y %H:%M:%S")
