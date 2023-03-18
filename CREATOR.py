@@ -46,6 +46,10 @@ except ModuleNotFoundError:
 from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
+from rich.rule import Rule
+
+linha_ret = Rule(style="white")
+
 import os
 import random
 from datetime import datetime
@@ -691,7 +695,7 @@ def firts_reg():
                 arquivo.write(email + '\n' + user_completo + '\n' + senha + "\n\n")
                 WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH,
                                                                                   '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[10]/android.view.View'))).click()
-                count += 1
+
                 sms = False
                 break
             else:
@@ -725,7 +729,6 @@ print(f'Senha sendo utilizada: {senha}\n')
 
 console = Console()
 
-count = 0
 
 device = [
     {'name': 'Bluestacks1', 'port': porta, 'udid': f'127.0.0.1:{porta}'},
@@ -746,11 +749,8 @@ subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id',
                stderr=subprocess.DEVNULL)
 cont = True
 while cont is True:
-    # atualiza o texto de contagem
-    count_text = Text("CONTAS CRIADAS: ", style="bold") + Text(str(count), style="bold green")
-    panel = Panel(count_text, title="", style="bold")
-    console.print(panel, highlight=False)
-    print('\n-----------------------------------\nIniciando criação')
+    console.print(linha_ret)
+    print('Iniciando criação')
     with open("storage/apk/caminho.txt", "r") as arquivo:
        appinsta = arquivo.read().strip()
     try:
@@ -815,7 +815,8 @@ while cont is True:
                     except:
                         sms = True
                         continue
-                print('-----------------------------------\nCriação de outro perfil.')
+                console.print(linha_ret)
+                print('Criação de outro perfil.')
                 subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id', shell=True)
                 # Clicar no botão de perfil
                 try:
@@ -834,9 +835,13 @@ while cont is True:
                     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH,
                                                                                '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[10]'))).click()
 
-                # Clicar em perfis
-                WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH,
-                                                                                  '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[2]'))).click()
+                    # Clicar em perfis
+                try:
+                    WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH,
+                                                                                      '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[2]'))).click()
+                except:
+                    WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH,
+                                                                                      '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.View'))).click()
                 # Clicar em adicionar conta
                 WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH,
                                                                                   '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]'))).click()
@@ -923,7 +928,7 @@ while cont is True:
                     arquivo.write(email + '\n' + user_completo + '\n' + senha + "\n\n")
                     WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,
                                                                                 '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[10]'))).click()
-                    count += 1
+
                     sms = False
 
                 else:
@@ -958,5 +963,6 @@ while cont is True:
                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
         subprocess.run(f'adb -s 127.0.0.1:{porta} uninstall io.appium.uiautomator2.server', stdout=subprocess.DEVNULL,
                        stderr=subprocess.DEVNULL, shell=True)
-        print('Algum erro não catalogado encontrado.\n-----------------------------------\n')
+        print('Algum erro não catalogado encontrado.')
+        console.print(linha_ret)
 
