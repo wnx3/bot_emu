@@ -3,7 +3,11 @@ import requests
 import hashlib
 import subprocess
 from colorama import init, Fore, Back, Style
-from rich import print
+from rich.console import Console
+from rich.pretty import install
+
+console = Console()
+install(font="Open Sans")
 
 # URL do arquivo no seu repositório GitHub
 url = 'https://raw.githubusercontent.com/wnx3/bot_emu/main/CREATOR.py'
