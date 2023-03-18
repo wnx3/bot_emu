@@ -208,7 +208,7 @@ def gerar_email():
                                                                 '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[2]'))).click()
 
     test.register(username=user_completo, password=senha)
-    print("Email gerado: " + str(test.address))
+    print("Email: " + str(test.address))
     email = str(test.address)
     time.sleep(2)
     WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH,
