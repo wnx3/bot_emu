@@ -2,6 +2,7 @@ import time
 import requests
 import hashlib
 import subprocess
+from colorama import init, Fore, Back, Style
 
 # URL do arquivo no seu repositório GitHub
 url = 'https://raw.githubusercontent.com/wnx3/bot_emu/main/CREATOR.py'
@@ -24,8 +25,8 @@ if local_hash != github_hash:
     # Baixe a nova versão do GitHub e salve-a localmente
     with open(local_path, 'w', encoding='utf-8') as f:
         f.write(github_version)
-    print("BOT atualizado.\nAbra novamente o bot.")
-    time.sleep(5)
+    print(Fore.LIGHTGREEN_EX + "BOT atualizado.\nAbra novamente o bot." + Style.RESET_ALL)
+    time.sleep(100)
 else:
     pass
 
@@ -62,7 +63,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
-from colorama import init, Fore, Back, Style
 from mailtm import Email
 import re
 import logging
