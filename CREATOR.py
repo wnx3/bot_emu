@@ -7,7 +7,6 @@ from rich.console import Console
 from rich.pretty import install
 
 console = Console()
-install(font="Open Sans")
 
 # URL do arquivo no seu repositório GitHub
 url = 'https://raw.githubusercontent.com/wnx3/bot_emu/main/CREATOR.py'
@@ -30,7 +29,7 @@ if local_hash != github_hash:
     # Baixe a nova versão do GitHub e salve-a localmente
     with open(local_path, 'w', encoding='utf-8') as f:
         f.write(github_version)
-    print("[bold][green]BOT atualizado:white_check_mark:.\nAbra novamente o bot.[/bold][/green]")
+    console.print("BOT atualizado:white_check_mark:.\nAbra novamente o bot.", style="bold green")
     time.sleep(100)
 else:
     pass
