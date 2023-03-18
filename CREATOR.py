@@ -3,6 +3,7 @@ import requests
 import hashlib
 import subprocess
 from colorama import init, Fore, Back, Style
+from rich import print
 
 # URL do arquivo no seu repositório GitHub
 url = 'https://raw.githubusercontent.com/wnx3/bot_emu/main/CREATOR.py'
@@ -25,7 +26,7 @@ if local_hash != github_hash:
     # Baixe a nova versão do GitHub e salve-a localmente
     with open(local_path, 'w', encoding='utf-8') as f:
         f.write(github_version)
-    print(Fore.LIGHTGREEN_EX + "BOT atualizado.\nAbra novamente o bot." + Style.RESET_ALL)
+    print("[bold][green]BOT atualizado:white_check_mark:.\nAbra novamente o bot.[/][/]")
     time.sleep(100)
 else:
     pass
@@ -549,7 +550,7 @@ def firts_reg():
     while abc:
         global sms
         sms = True
-        subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id', shell=True)
+        #subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id', shell=True)
 
         try:
             WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,
@@ -668,7 +669,7 @@ def firts_reg():
 
         try:
             if len(verificar) == 1:
-                print(Fore.LIGHTGREEN_EX + 'Conta criada com sucesso.' + Style.RESET_ALL)
+                print('[green]Conta criada com sucesso. :heart_eyes:[/]')
                 now = datetime.now()
                 timestamp = now.strftime("%d/%m/%Y %H:%M:%S")
                 creds = Credentials.from_authorized_user_file('token.json', SCOPES)
@@ -746,8 +747,8 @@ android_id = gerar_id()
 subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings put secure android_id {android_id}', stdout=subprocess.DEVNULL,
                stderr=subprocess.DEVNULL, shell=True)
 time.sleep(2)
-subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id', shell=True, stdout=subprocess.DEVNULL,
-               stderr=subprocess.DEVNULL)
+#subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id', shell=True, stdout=subprocess.DEVNULL,
+#               stderr=subprocess.DEVNULL)
 cont = True
 while cont is True:
     console.print(linha_ret)
@@ -780,9 +781,9 @@ while cont is True:
         subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings put secure android_id {android_id}',
                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
         time.sleep(2)
-        subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id', shell=True,
-                       stdout=subprocess.DEVNULL,
-                       stderr=subprocess.DEVNULL)
+        #subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id', shell=True,
+        #               stdout=subprocess.DEVNULL,
+        #               stderr=subprocess.DEVNULL)
 
         try:
             firts_reg()
@@ -823,7 +824,7 @@ while cont is True:
                         continue
                 console.print(linha_ret)
                 print('Criação de outro perfil.')
-                subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id', shell=True)
+                #subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id', shell=True)
                 # Clicar no botão de perfil
                 try:
                     time.sleep(3)
@@ -905,7 +906,7 @@ while cont is True:
                                                                                    '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[11]'))).click()
                     except:
                         pass
-                    print(Fore.LIGHTGREEN_EX + 'Conta criada com sucesso.' + Style.RESET_ALL)
+                    print('[green]Conta criada com sucesso. :heart_eyes:[/]')
 
                     now = datetime.now()
                     timestamp = now.strftime("%d/%m/%Y %H:%M:%S")
