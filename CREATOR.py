@@ -451,7 +451,7 @@ def gerar_email_firts_reg():
     arquivo = open('configuracoes/contas/senha_perfis.txt')
     senha = arquivo.read()
     test.register(username=user_completo, password=senha)
-    print("Email gerado: " + str(test.address))
+    print("Email: " + str(test.address))
     time.sleep(2)
     email = str(test.address)
     time.sleep(2)
