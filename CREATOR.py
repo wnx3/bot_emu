@@ -122,12 +122,13 @@ def vpn_surf():
     print(Fore.LIGHTRED_EX + 'SMS' + Style.RESET_ALL)
     sms = True
     print(Fore.LIGHTMAGENTA_EX + 'Alterando IP da SurfShark\n' + Style.RESET_ALL)
+    print('Limpando dados.')
     gerar_id()
     subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings put secure android_id {android_id}', shell=True)
 
     subprocess.run(f'adb -s 127.0.0.1:{porta} shell pm clear com.instagram.lite', stdout=subprocess.DEVNULL,
                    stderr=subprocess.DEVNULL, check=True, shell=True)
-    print('Limpando dados.')
+
     try:
         driver.start_activity("com.surfshark.vpnclient.android", ".StartActivity")
     except:
@@ -751,6 +752,11 @@ cont = True
 while cont is True:
     console.print(linha_ret)
     print('Iniciando criação')
+    try:
+        subprocess.run(f'adb -s 127.0.0.1:{porta} shell pm clear com.instagram.lite', stdout=subprocess.DEVNULL,
+                       stderr=subprocess.DEVNULL, check=True, shell=True)
+    except:
+        pass
     with open("storage/apk/caminho.txt", "r") as arquivo:
        appinsta = arquivo.read().strip()
     try:
