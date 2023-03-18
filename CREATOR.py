@@ -28,7 +28,7 @@ if local_hash != github_hash:
     # Baixe a nova versão do GitHub e salve-a localmente
     with open(local_path, 'w', encoding='utf-8') as f:
         f.write(github_version)
-    console.print("BOT atualizado.\nAbra novamente o bot.", style="bold green")
+    console.print("[bold green]BOT atualizado.\nAbra novamente o bot.[/]")
     time.sleep(100)
 else:
     pass
@@ -124,7 +124,7 @@ def vpn_surf():
     global sms
     print(Fore.LIGHTRED_EX + 'SMS' + Style.RESET_ALL)
     sms = True
-    print(Fore.LIGHTMAGENTA_EX + 'Alterando IP da SurfShark\n' + Style.RESET_ALL)
+    console.print('[yellow_dim]Alterando IP da SurfShark[/yellow_dim]\n')
     print('Limpando dados.')
     gerar_id()
     subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings put secure android_id {android_id}', shell=True)
@@ -671,7 +671,7 @@ def firts_reg():
 
         try:
             if len(verificar) == 1:
-                console.print('Conta criada com sucesso.', style='bold green')
+                console.print('[bold green]Conta criada com sucesso.[/]')
                 now = datetime.now()
                 timestamp = now.strftime("%d/%m/%Y %H:%M:%S")
                 creds = Credentials.from_authorized_user_file('token.json', SCOPES)
@@ -908,7 +908,7 @@ while cont is True:
                                                                                    '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[11]'))).click()
                     except:
                         pass
-                    console.print('Conta criada com sucesso.', style='bold green')
+                    console.print('[bold green]Conta criada com sucesso.[/]')
 
                     now = datetime.now()
                     timestamp = now.strftime("%d/%m/%Y %H:%M:%S")
