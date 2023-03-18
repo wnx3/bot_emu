@@ -971,5 +971,4 @@ while cont is True:
         subprocess.run(f'adb -s 127.0.0.1:{porta} uninstall io.appium.uiautomator2.server', stdout=subprocess.DEVNULL,
                        stderr=subprocess.DEVNULL, shell=True)
         print('Algum erro não catalogado encontrado.')
-        console.print(linha_ret)
 
