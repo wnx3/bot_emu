@@ -210,7 +210,6 @@ def gerar_email():
 
     test.register(username=user_completo, password=senha)
     print("Email gerado: " + str(test.address))
-    time.sleep(4)
     email = str(test.address)
     time.sleep(2)
     WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH,
