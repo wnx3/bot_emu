@@ -1,3 +1,15 @@
+try:
+    from faker import Faker
+except ModuleNotFoundError:
+    import subprocess
+    import sys
+
+    subprocess.run(['venv/scripts/activate.bat'], shell=True)
+    print('Instalando dependências...')
+    subprocess.run(['pip', 'install', '-r', 'requirements.txt'])
+    subprocess.run(['deactivate'], shell=True)
+    from faker import Faker
+
 import time
 import requests
 import hashlib
@@ -33,17 +45,7 @@ if local_hash != github_hash:
 else:
     pass
 
-try:
-    from faker import Faker
-except ModuleNotFoundError:
-    import subprocess
-    import sys
 
-    subprocess.run(['venv/scripts/activate.bat'], shell=True)
-    print('Instalando dependências...')
-    subprocess.run(['pip', 'install', '-r', 'requirements.txt'])
-    subprocess.run(['deactivate'], shell=True)
-    from faker import Faker
 
 # Aqui vai o restante do código que depende do pacote numpy
 
