@@ -122,9 +122,8 @@ def vpn_nord():
 
 def vpn_surf():
     global sms
-    print(Fore.LIGHTRED_EX + 'SMS' + Style.RESET_ALL)
     sms = True
-    console.print('[yellow_dim]Alterando IP da SurfShark[/yellow_dim]\n')
+    console.print('[red]SMS\nAlterando IP da SurfShark[/]')
     print('Limpando dados.')
     gerar_id()
     subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings put secure android_id {android_id}', shell=True)
