@@ -99,15 +99,14 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
 def vpn_nord():
     global sms
-    print(Fore.LIGHTRED_EX + 'SMS' + Style.RESET_ALL)
+    console.print('[red]SMS\nAlterando IP da NordVPN[/]')
+    print('Limpando dados.')
     gerar_id()
     subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings put secure android_id {android_id}', shell=True)
 
     subprocess.run(f'adb -s 127.0.0.1:{porta} shell pm clear com.instagram.lite', stdout=subprocess.DEVNULL,
                    stderr=subprocess.DEVNULL, check=True, shell=True)
-    print('Limpando dados.')
     sms = True
-    print(Fore.LIGHTMAGENTA_EX + 'Alterando IP da NordVPN\n' + Style.RESET_ALL)
     try:
         driver.start_activity("com.nordvpn.android", ".MainActivity")
     except:
