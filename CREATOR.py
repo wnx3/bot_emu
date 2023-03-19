@@ -256,11 +256,11 @@ def gerar_email():
     time.sleep(2)
 
     try:
-        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH,
+        WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH,
                                                                           '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[4]'))).click()
 
     except:
-        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH,
+        WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH,
                                                                           '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[3]'))).click()
     try:
         WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH,
