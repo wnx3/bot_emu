@@ -161,6 +161,34 @@ def vpn_surf():
 
     abc = False
 
+def vpn_better():
+    global sms
+    sms = True
+    console.print('[red]SMS\nAlterando IP da BetterNet[/]')
+    print('Limpando dados.')
+    gerar_id()
+    subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings put secure android_id {android_id}', shell=True)
+
+    subprocess.run(f'adb -s 127.0.0.1:{porta} shell pm clear com.instagram.lite', stdout=subprocess.DEVNULL,
+                   stderr=subprocess.DEVNULL, check=True, shell=True)
+
+    try:
+        driver.start_activity("com.freevpnintouch", "com.anchorfree.betternet.ui.BetternetActivity")
+    except:
+        pass
+    #time.sleep(3)
+    #WebDriverWait(driver, 10).until(
+    #    EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
+    #time.sleep(3)
+    #WebDriverWait(driver, 10).until(
+    #    EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
+    #time.sleep(5)
+    #WebDriverWait(driver, 10).until(
+    #    EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
+    #time.sleep(5)
+    subprocess.run(f'adb -s 127.0.0.1:{porta} shell input keyevent KEYCODE_HOME', stdout=subprocess.DEVNULL,
+                   stderr=subprocess.DEVNULL, check=True, shell=True)
+
 
 def vpn_avg():
     global sms
@@ -721,6 +749,8 @@ def firts_reg():
                     vpn_avg()
                 elif conteudo == "surf":
                     vpn_surf()
+                elif conteudo == "betternet":
+                    vpn_better()
                 elif conteudo == "nord":
                     vpn_nord()
                 else:
@@ -811,6 +841,8 @@ while cont is True:
                     vpn_avg()
                 elif conteudo == "surf":
                     vpn_surf()
+                elif conteudo == "betternet":
+                    vpn_better()
                 elif conteudo == "nord":
                     vpn_nord()
                 else:
@@ -963,6 +995,8 @@ while cont is True:
                             vpn_avg()
                         elif conteudo == "surf":
                             vpn_surf()
+                        elif conteudo == "betternet":
+                            vpn_better()
                         elif conteudo == "nord":
                             vpn_nord()
                         else:
