@@ -137,16 +137,16 @@ def vpn_surf():
         driver.start_activity("com.surfshark.vpnclient.android", ".StartActivity")
     except:
         pass
-    time.sleep(3)
-    WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
-    time.sleep(3)
-    WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
-    time.sleep(5)
-    WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
-    time.sleep(5)
+    time.sleep(7)
+    #WebDriverWait(driver, 10).until(
+    #    EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
+    #time.sleep(3)
+    #WebDriverWait(driver, 10).until(
+    #    EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
+    #time.sleep(5)
+    #WebDriverWait(driver, 10).until(
+    #    EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
+    #time.sleep(5)
     subprocess.run(f'adb -s 127.0.0.1:{porta} shell input keyevent KEYCODE_HOME', stdout=subprocess.DEVNULL,
                    stderr=subprocess.DEVNULL, check=True, shell=True)
 
