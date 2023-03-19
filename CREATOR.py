@@ -189,6 +189,9 @@ def vpn_better():
     except:
         WebDriverWait(driver, 20).until(
         EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/buttonConnect'))).click()
+        time.sleep(4)
+        WebDriverWait(driver, 20).until(
+        EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/buttonConnect'))).click()
     #time.sleep(5)
     subprocess.run(f'adb -s 127.0.0.1:{porta} shell input keyevent KEYCODE_HOME', stdout=subprocess.DEVNULL,
                    stderr=subprocess.DEVNULL, check=True, shell=True)
