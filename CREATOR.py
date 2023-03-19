@@ -235,7 +235,7 @@ def gerar_email():
     print('Codigo enviado')
     codigo = None
     try:
-        test.start(listener, interval=5)
+        test.start(listener, interval=15)
         codigo = 0
         while codigo != 20:
             time.sleep(2)
@@ -478,7 +478,7 @@ def gerar_email_firts_reg():
     print('Codigo enviado')
     codigo = None
     try:
-        test.start(listener, interval=5)
+        test.start(listener, interval=15)
         codigo = 0
         while codigo != 20:
             time.sleep(2)
