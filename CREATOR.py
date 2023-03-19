@@ -165,15 +165,14 @@ def vpn_surf():
 
 def vpn_avg():
     global sms
-    print(Fore.LIGHTRED_EX + 'SMS' + Style.RESET_ALL)
+    console.print('[red]SMS\nAlterando IP da SurfShark[/]')
+    print('Limpando dados.')
     gerar_id()
     subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings put secure android_id {android_id}', shell=True)
 
     subprocess.run(f'adb -s 127.0.0.1:{porta} shell pm clear com.instagram.lite', stdout=subprocess.DEVNULL,
                    stderr=subprocess.DEVNULL, check=True, shell=True)
-    print('Limpando dados.')
     sms = True
-    print(Fore.LIGHTMAGENTA_EX + 'Alterando IP da AVG\n' + Style.RESET_ALL)
     try:
         driver.start_activity("com.avg.android.vpn", "com.avast.android.vpn.app.wizard.WizardActivity")
     except:
