@@ -265,9 +265,13 @@ def gerar_email():
     except:
         WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH,
                                                                           '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[3]'))).click()
-
+    try:
+        WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH,
+                                                                          '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[2]/android.view.View')))
+    except:
+        pass
     test.stop()
-    time.sleep(3)
+    #time.sleep(3)
     codigo_invalido = driver.find_elements(By.XPATH,
                                            '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.View[5]')
     continua_na_tela = driver.find_elements(By.XPATH,
