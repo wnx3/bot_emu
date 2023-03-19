@@ -242,7 +242,7 @@ def gerar_email():
             codigo = codigo + 1
         codigo = cod
     except Exception as e:
-        if "many requests" in str(e):
+        if "Too Many Requests" in str(e):
             pass
         else:
             print(e)
@@ -302,7 +302,7 @@ def gerar_email():
                 codigo = codigo + 1
             codigo = cod
         except Exception as e:
-            if "many requests" in str(e):
+            if "Too Many Requests" in str(e):
                 pass
             else:
                 print(e)
@@ -357,7 +357,7 @@ def gerar_email():
                 codigo = codigo + 1
             codigo = cod
         except Exception as e:
-            if "many requests" in str(e):
+            if "Too Many Requests" in str(e):
                 pass
             else:
                 print(e)
@@ -410,7 +410,7 @@ def gerar_email():
                     codigo = codigo + 1
                 codigo = cod
             except Exception as e:
-                if "many requests" in str(e):
+                if "Too Many Requests" in str(e):
                     pass
                 else:
                     print(e)
@@ -485,7 +485,7 @@ def gerar_email_firts_reg():
             codigo = codigo + 1
         codigo = cod
     except Exception as e:
-        if "many requests" in str(e):
+        if "Too Many Requests" in str(e):
             pass
         else:
             print(e)
@@ -531,7 +531,7 @@ def gerar_email_firts_reg():
                 codigo = codigo + 1
             codigo = cod
         except Exception as e:
-            if "many requests" in str(e):
+            if "Too Many Requests" in str(e):
                 pass
             else:
                 print(e)
@@ -906,7 +906,9 @@ while cont is True:
                                                                                   '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[2]'))).click()
 
                 print('Verificando...')
-                time.sleep(20)
+                WebDriverWait(driver, 20).until(EC.visibility_of_element_located)(((By.XPATH,
+                                                 '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[10]')))
+                #time.sleep(20)
                 verificar = driver.find_elements(By.XPATH,
                                                  '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[10]')
                 time.sleep(1)
