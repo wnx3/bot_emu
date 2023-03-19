@@ -177,19 +177,22 @@ def vpn_better():
     except:
         pass
     #time.sleep(3)
-    try:
+    dialog = driver.find_elements(By.ID, 'com.freevpnintouch:id/dialogCtaPositive')
+    connect = driver.find_element(By.ID, 'com.freevpnintouch:id/buttonConnect').text
+    if len(dialog) == 1:
         WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/dialogCtaPositive'))).click()
+                EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/dialogCtaPositive'))).click()
         time.sleep(3)
         WebDriverWait(driver, 20).until(
             EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/buttonConnect'))).click()
         #time.sleep(5)
         WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/buttonConnect'))).click()
-    except:
+    while connect == 'CONNECT':
         WebDriverWait(driver, 20).until(
         EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/buttonConnect'))).click()
         time.sleep(4)
+        connect = driver.find_element(By.ID, 'com.freevpnintouch:id/buttonConnect').text
         #WebDriverWait(driver, 20).until(
         #EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/buttonConnect'))).click()
     #time.sleep(5)
