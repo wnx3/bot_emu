@@ -626,7 +626,7 @@ def firts_reg():
             WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH,
                                                                               '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.widget.MultiAutoCompleteTextView'))).send_keys(
                 user_completo)
-            print(f'Usuário gerado: {user_completo}')
+            print(f'Usuário: {user_completo}')
             time.sleep(3)
             WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,
                                                                         '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[2]'))).click()
@@ -866,7 +866,7 @@ while cont is True:
                 nome_completo = nome + sobrenome
                 numeros_concatenados = ''.join(str(numero) for numero in lista_user)
                 user_completo = nome_completo + '.' + str(numeros_concatenados)
-                print('User criado: ' + user_completo)
+                print('User: ' + user_completo)
                 WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH,
                                                                                   '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.widget.MultiAutoCompleteTextView'))).send_keys(
                     user_completo)
