@@ -177,20 +177,24 @@ def vpn_better():
     except:
         pass
     #time.sleep(3)
-    WebDriverWait(driver, 20).until(
-        EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/dialogCtaPositive'))).click()
-    time.sleep(3)
-    WebDriverWait(driver, 20).until(
-        EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/buttonConnect'))).click()
-    #time.sleep(5)
-    WebDriverWait(driver, 10).until(
+    try:
+        WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/dialogCtaPositive'))).click()
+        time.sleep(3)
+        WebDriverWait(driver, 20).until(
+            EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/buttonConnect'))).click()
+        #time.sleep(5)
+        WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/buttonConnect'))).click()
+    except:
+        WebDriverWait(driver, 20).until(
         EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/buttonConnect'))).click()
     #time.sleep(5)
     subprocess.run(f'adb -s 127.0.0.1:{porta} shell input keyevent KEYCODE_HOME', stdout=subprocess.DEVNULL,
                    stderr=subprocess.DEVNULL, check=True, shell=True)
     
     abc = False
-    
+
 def vpn_cyberghost():
     global sms
     sms = True
@@ -288,7 +292,7 @@ def gerar_email():
     # driver.find_element(By.XPATH,
     #                    '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[4]').click()
 
-    print('Codigo enviado')
+    print('Aguardando codigo...')
     codigo = None
     try:
         test.start(listener, interval=15)
@@ -531,7 +535,7 @@ def gerar_email_firts_reg():
     WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH,
                                                                       '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[4]'))).click()
 
-    print('Codigo enviado')
+    print('Aguardando codigo...')
     codigo = None
     try:
         test.start(listener, interval=15)
