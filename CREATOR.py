@@ -46,9 +46,6 @@ else:
     pass
 
 
-
-
-
 from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
@@ -238,7 +235,7 @@ def gerar_email():
     print('Codigo enviado')
     codigo = None
     try:
-        test.start(listener, interval=15)
+        test.start(listener, interval=5)
         codigo = 0
         while codigo != 20:
             time.sleep(2)
@@ -298,7 +295,7 @@ def gerar_email():
                             '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[1]').click()
         codigo = None
         try:
-            test.start(listener, interval=15)
+            test.start(listener, interval=5)
             codigo = 0
             while codigo != 20:
                 time.sleep(1.5)
@@ -314,7 +311,7 @@ def gerar_email():
                                                                           '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.widget.MultiAutoCompleteTextView'))).send_keys(
             codigo)
         try:
-            WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH,
+            WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH,
                                                                         '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[1]/android.view.ViewGroup[2]/android.view.View')))
         except:
             pass
@@ -406,7 +403,7 @@ def gerar_email():
                                 '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[1]').click()
             codigo = None
             try:
-                test.start(listener, interval=15)
+                test.start(listener, interval=5)
                 codigo = 0
                 while codigo != 20:
                     time.sleep(2)
@@ -442,7 +439,6 @@ def gerar_email():
             time.sleep(5)
     elif reenv_cod == 0:
         print('Codigo aceito.')
-
 
 def gerar_email_firts_reg():
     global cod
@@ -482,7 +478,7 @@ def gerar_email_firts_reg():
     print('Codigo enviado')
     codigo = None
     try:
-        test.start(listener, interval=15)
+        test.start(listener, interval=5)
         codigo = 0
         while codigo != 20:
             time.sleep(2)
@@ -528,7 +524,7 @@ def gerar_email_firts_reg():
         time.sleep(2)
         codigo = None
         try:
-            test.start(listener, interval=15)
+            test.start(listener, interval=5)
             codigo = 0
             while codigo != 20:
                 time.sleep(1.5)
