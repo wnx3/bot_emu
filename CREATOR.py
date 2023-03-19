@@ -245,7 +245,7 @@ def gerar_email():
         if "Too Many Requests" in str(e):
             pass
         else:
-            print(e)
+            pass
     print(f"Codigo recebido: {codigo}")
     try:
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH,
@@ -488,7 +488,7 @@ def gerar_email_firts_reg():
         if "Too Many Requests" in str(e):
             pass
         else:
-            print(e)
+            pass
     print(f"Codigo recebido: {codigo}")
     try:
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH,
