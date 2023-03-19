@@ -188,7 +188,7 @@ def vpn_better():
     #time.sleep(5)
     subprocess.run(f'adb -s 127.0.0.1:{porta} shell input keyevent KEYCODE_HOME', stdout=subprocess.DEVNULL,
                    stderr=subprocess.DEVNULL, check=True, shell=True)
-    
+    abc = False
 def vpn_cyberghost():
     global sms
     sms = True
@@ -216,7 +216,7 @@ def vpn_cyberghost():
     #time.sleep(5)
     subprocess.run(f'adb -s 127.0.0.1:{porta} shell input keyevent KEYCODE_HOME', stdout=subprocess.DEVNULL,
                    stderr=subprocess.DEVNULL, check=True, shell=True)
-
+    abc = False
 
 def vpn_avg():
     global sms
