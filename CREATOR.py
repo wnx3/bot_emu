@@ -165,7 +165,7 @@ def vpn_surf():
 
 def vpn_avg():
     global sms
-    console.print('[red]SMS\nAlterando IP da SurfShark[/]')
+    console.print('[red]SMS\nAlterando IP da AVG[/]')
     print('Limpando dados.')
     gerar_id()
     subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings put secure android_id {android_id}', shell=True)
@@ -181,11 +181,11 @@ def vpn_avg():
                    stderr=subprocess.DEVNULL, check=True, shell=True)
 
     # time.sleep(10)
-    # WebDriverWait(driver, 30).until(
-    #    EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
+    WebDriverWait(driver, 30).until(
+        EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
     # time.sleep(10)
-    # WebDriverWait(driver, 30).until(
-    #    EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
+    WebDriverWait(driver, 30).until(
+       EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
     # time.sleep(5)
     # WebDriverWait(driver, 30).until(
     #    EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
@@ -499,10 +499,10 @@ def gerar_email_firts_reg():
         time.sleep(5)
     time.sleep(2)
     try:
-        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH,
+        WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH,
                                                                           '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[4]'))).click()
     except:
-        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH,
+        WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH,
                                                                           '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[3]'))).click()
     test.stop()
     time.sleep(5)
