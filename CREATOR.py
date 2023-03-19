@@ -47,7 +47,7 @@ else:
 
 
 
-# Aqui vai o restante do código que depende do pacote numpy
+
 
 from rich.console import Console
 from rich.panel import Panel
@@ -71,6 +71,20 @@ from selenium.webdriver.chrome.options import Options
 from mailtm import Email
 import re
 import logging
+
+# verifica se o arquivo existe na pasta do bot
+if not os.path.exists("configuracoes/nome_maquina.txt"):
+    # se o arquivo não existe, pede o nome do arquivo ao usuário e armazena em uma variável global
+    global nome_arquivo
+    maquina = input("Qual o nome do arquivo que deseja criar? ")
+    # escreve o nome do arquivo em um arquivo de configuração
+    with open("configuracoes/nome_maquina.txt", "w") as f:
+        f.write(maquina)
+else:
+    # se o arquivo existe, lê o nome do arquivo a partir do arquivo de configuração ou da variável global
+    with open("configuracoes/nome_maquina.txt") as f:
+        maquina = f.readline().strip()
+
 
 logger = logging.getLogger(__name__)
 
