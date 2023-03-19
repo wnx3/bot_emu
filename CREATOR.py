@@ -176,7 +176,7 @@ def vpn_better():
         driver.start_activity("com.freevpnintouch", "com.anchorfree.betternet.ui.BetternetActivity")
     except:
         pass
-    #time.sleep(3)
+    time.sleep(10)
     dialog = driver.find_elements(By.ID, 'com.freevpnintouch:id/dialogCtaPositive')
     connect = driver.find_element(By.ID, 'com.freevpnintouch:id/buttonConnect').text
     if len(dialog) == 1:
