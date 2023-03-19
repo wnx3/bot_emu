@@ -73,16 +73,16 @@ import re
 import logging
 
 # verifica se o arquivo existe na pasta do bot
-if not os.path.exists("configuracoes/nome_maquina.txt"):
+if not os.path.exists("configuracoes/outros/nome_maquina.txt"):
     # se o arquivo não existe, pede o nome do arquivo ao usuário e armazena em uma variável global
     global nome_arquivo
-    maquina = input("Qual o nome do arquivo que deseja criar? ")
+    maquina = input("Qual nome deseja que apareça na planilha?: ")
     # escreve o nome do arquivo em um arquivo de configuração
-    with open("configuracoes/nome_maquina.txt", "w") as f:
+    with open("configuracoes/outros/nome_maquina.txt", "w") as f:
         f.write(maquina)
 else:
     # se o arquivo existe, lê o nome do arquivo a partir do arquivo de configuração ou da variável global
-    with open("configuracoes/nome_maquina.txt") as f:
+    with open("configuracoes/outros/nome_maquina.txt") as f:
         maquina = f.readline().strip()
 
 
@@ -93,7 +93,6 @@ handler.setLevel(logging.ERROR)
 
 logger.addHandler(handler)
 
-username = os.getenv('USERNAME')
 
 with open("configuracoes\outros\SPREADSHEET_ID.txt", "r") as arquivo:
     SPREADSHEET_ID = arquivo.read().strip()
@@ -698,7 +697,7 @@ def firts_reg():
                 # Insert user, password, and timestamp into first empty row
                 range_to_update = f'contas!A{first_empty_row_index}:D{first_empty_row_index}'
                 value_input_option = 'USER_ENTERED'
-                value_range_body = {'values': [[user_completo + ' ' + senha, email, timestamp, username]]}
+                value_range_body = {'values': [[user_completo + ' ' + senha, email, timestamp, maquina]]}
                 result = service.spreadsheets().values().update(
                     spreadsheetId=SPREADSHEET_ID,
                     range=range_to_update,
@@ -938,7 +937,7 @@ while cont is True:
                     # Insert user, password, and timestamp into first empty row
                     range_to_update = f'contas!A{first_empty_row_index}:D{first_empty_row_index}'
                     value_input_option = 'USER_ENTERED'
-                    value_range_body = {'values': [[user_completo + ' ' + senha, email, timestamp, username]]}
+                    value_range_body = {'values': [[user_completo + ' ' + senha, email, timestamp, maquina]]}
                     result = service.spreadsheets().values().update(
                         spreadsheetId=SPREADSHEET_ID,
                         range=range_to_update,
