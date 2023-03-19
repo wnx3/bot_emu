@@ -177,11 +177,11 @@ def vpn_better():
     except:
         pass
     #time.sleep(3)
-    #WebDriverWait(driver, 10).until(
-    #    EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
-    #time.sleep(3)
-    #WebDriverWait(driver, 10).until(
-    #    EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
+    WebDriverWait(driver, 20).until(
+        EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/dialogCtaPositive'))).click()
+    time.sleep(3)
+    WebDriverWait(driver, 20).until(
+        EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/buttonConnect'))).click()
     #time.sleep(5)
     #WebDriverWait(driver, 10).until(
     #    EC.element_to_be_clickable((By.ID, 'com.avg.android.vpn:id/view_switch'))).click()
@@ -851,8 +851,8 @@ while cont is True:
 
         gerar_id()
         android_id = gerar_id()
-        subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings put secure android_id {android_id}',
-                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
+        #subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings put secure android_id {android_id}',
+        #               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
         time.sleep(2)
         #subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id', shell=True,
         #               stdout=subprocess.DEVNULL,
