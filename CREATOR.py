@@ -206,6 +206,7 @@ def vpn_better():
     if re.search(b"tun0", output):
         print("Não conectado na BetterNet.")
         try:
+            connect = driver.find_element(By.ID, 'com.freevpnintouch:id/buttonConnect').text
             driver.start_activity("com.freevpnintouch", "com.anchorfree.betternet.ui.BetternetActivity")
             while connect == 'CONNECT':
                 WebDriverWait(driver, 20).until(
