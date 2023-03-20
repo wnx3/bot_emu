@@ -205,13 +205,16 @@ def vpn_better():
     # Verifica se a conexão VPN está ativa
     if not re.search(b"tun0", output):
         print("Não conectado na BetterNet.")
-        connect = driver.find_element(By.ID, 'com.freevpnintouch:id/buttonConnect').text
-        driver.start_activity("com.freevpnintouch", "com.anchorfree.betternet.ui.BetternetActivity")
-        while connect == 'CONNECT':
-            WebDriverWait(driver, 20).until(
-            EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/buttonConnect'))).click()
-            time.sleep(4)
+        try:
             connect = driver.find_element(By.ID, 'com.freevpnintouch:id/buttonConnect').text
+            driver.start_activity("com.freevpnintouch", "com.anchorfree.betternet.ui.BetternetActivity")
+            while connect == 'CONNECT':
+                WebDriverWait(driver, 20).until(
+                EC.element_to_be_clickable((By.ID, 'com.freevpnintouch:id/buttonConnect'))).click()
+                time.sleep(4)
+                connect = driver.find_element(By.ID, 'com.freevpnintouch:id/buttonConnect').text
+        except:
+            pass
     abc = False
 
 def vpn_cyberghost():
