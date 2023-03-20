@@ -203,7 +203,7 @@ def vpn_better():
     output = subprocess.check_output(['adb', '-s', ip, 'shell', 'ifconfig'])
 
     # Verifica se a conexão VPN está ativa
-    if re.search(b"tun0", output):
+    if not re.search(b"tun0", output):
         print("Não conectado na BetterNet.")
         try:
             connect = driver.find_element(By.ID, 'com.freevpnintouch:id/buttonConnect').text
