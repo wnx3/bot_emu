@@ -216,6 +216,7 @@ def vpn_better():
         except:
             pass
 
+
     
     abc = False
 
@@ -856,11 +857,11 @@ cont = True
 while cont is True:
     console.print(linha_ret)
     print('Iniciando criação')
-    try:
-        subprocess.run(f'adb -s 127.0.0.1:{porta} shell pm uninstall com.instagram.lite', stdout=subprocess.DEVNULL,
-                       stderr=subprocess.DEVNULL, check=True, shell=True)
-    except:
-        pass
+    #try:
+    #    subprocess.run(f'adb -s 127.0.0.1:{porta} shell pm uninstall com.instagram.lite', stdout=subprocess.DEVNULL,
+    #                   stderr=subprocess.DEVNULL, check=True, shell=True)
+    #except:
+    #    pass
     with open("storage/apk/caminho.txt", "r") as arquivo:
        appinsta = arquivo.read().strip()
     try:
