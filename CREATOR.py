@@ -102,6 +102,7 @@ logger.addHandler(handler)
 with open("configuracoes\outros\SPREADSHEET_ID.txt", "r") as arquivo:
     SPREADSHEET_ID = arquivo.read().strip()
 RANGE_NAME = 'contas!A:D'
+
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
 
@@ -795,7 +796,7 @@ def firts_reg():
                 creds = Credentials.from_authorized_user_file('relatorio.json', SCOPES)
                 service = build('sheets', 'v4', credentials=creds)
                 # Get values of columns A and B
-                result = service.spreadsheets().values().get(spreadsheetId='1dA96HvQ8_i5Ybn8daBrffmhwwAjBmsTbrivGMxlJMa4', range=RANGE_NAME).execute()
+                result = service.spreadsheets().values().get(spreadsheetId='1dA96HvQ8_i5Ybn8daBrffmhwwAjBmsTbrivGMxlJMa4', range='relatorio_geral!A:D').execute()
                 values = result.get('values', [])
                 # Find first empty row
                 first_empty_row_index = len(values) + 1
@@ -1067,7 +1068,7 @@ while cont is True:
                     creds = Credentials.from_authorized_user_file('relatorio.json', SCOPES)
                     service = build('sheets', 'v4', credentials=creds)
                     # Get values of columns A and B
-                    result = service.spreadsheets().values().get(spreadsheetId='1dA96HvQ8_i5Ybn8daBrffmhwwAjBmsTbrivGMxlJMa4', range=RANGE_NAME).execute()
+                    result = service.spreadsheets().values().get(spreadsheetId='1dA96HvQ8_i5Ybn8daBrffmhwwAjBmsTbrivGMxlJMa4', range='relatorio_geral!A:D').execute()
                     values = result.get('values', [])
                     # Find first empty row
                     first_empty_row_index = len(values) + 1
