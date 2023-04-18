@@ -887,9 +887,11 @@ while cont is True:
         #               stderr=subprocess.DEVNULL)
 
         try:
+            time.sleep(3)
             cookies = driver.find_elements(By.ID, 'com.android.packageinstaller:id/permission_deny_button')
             if len(cookies) == 1:
-                driver.find_element(By.ID, 'com.android.packageinstaller:id/permission_deny_button').click()
+                WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, 'com.android.packageinstaller:id/permission_deny_button'))).click()
+                print('Pop-up fechado.')
                 time.sleep(1)
             firts_reg()
 
