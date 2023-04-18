@@ -31,7 +31,7 @@ for file_name in file_list:
         # Baixe a nova versão do GitHub e salve-a localmente
         with open(local_path, 'w', encoding='utf-8') as f:
             f.write(github_version)
-        console.print("[bold green]BOT atualizado.\nAbra novamente.[/]")
+        print("[bold green]BOT atualizado.\nAbra novamente.[/]")
         time.sleep(100)
     else:
         pass
@@ -661,7 +661,7 @@ def firts_reg():
     while abc:
         global sms
         sms = True
-        subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id', shell=True)
+        #subprocess.run(f'adb -s 127.0.0.1:{porta} shell settings get secure android_id', shell=True)
 
         try:
             WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,
