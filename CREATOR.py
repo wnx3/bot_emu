@@ -9,7 +9,7 @@ except ModuleNotFoundError:
     subprocess.run(['pip', 'install', '-r', 'requirements.txt'])
     subprocess.run(['deactivate'], shell=True)
     from faker import Faker
-
+import os
 import time
 import requests
 import hashlib
@@ -62,7 +62,7 @@ from rich.rule import Rule
 
 linha_ret = Rule(style="white")
 
-import os
+
 import random
 from datetime import datetime
 from google.oauth2.credentials import Credentials
