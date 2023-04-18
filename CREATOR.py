@@ -679,7 +679,7 @@ def firts_reg():
             time.sleep(3)
             gerar_email_firts_reg()
         except Exception as e:
-            gerar_email_firts_reg()
+            pass
 
 
         print('Nome escolhido: ' + nome_completo)
