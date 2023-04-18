@@ -1,4 +1,8 @@
-
+import os
+import time
+import requests
+import hashlib
+import subprocess
 
 base_url = 'https://raw.githubusercontent.com/wnx3/bot_emu/main/'
 
