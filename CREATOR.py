@@ -21,31 +21,38 @@ from rich.console import Console
 
 console = Console()
 
-# URL do arquivo no seu repositório GitHub
-url = 'https://raw.githubusercontent.com/wnx3/bot_emu/main/CREATOR.py'
+base_url = 'https://raw.githubusercontent.com/wnx3/bot_emu/main/'
 
-# Caminho local do seu arquivo Python
-local_path = 'CREATOR.py'
+# Lista de arquivos que você deseja verificar e atualizar
+file_list = ['CREATOR.py', 'relatorio.py']
 
-# Obtenha a última versão do arquivo do GitHub
-response = requests.get(url)
-github_version = response.content.decode('utf-8')
+for file_name in file_list:
+    # Caminho local do seu arquivo Python
+    local_path = file_name
+    
+    # URL completa do arquivo no GitHub
+    url = base_url + file_name
 
-# Verifique se o arquivo local tem a mesma versão do GitHub
-with open(local_path, 'r', encoding='utf-8') as f:
-    local_version = f.read()
+    # Obtenha a última versão do arquivo do GitHub
+    response = requests.get(url)
+    github_version = response.content.decode('utf-8')
 
-local_hash = hashlib.sha256(local_version.encode()).hexdigest()
-github_hash = hashlib.sha256(github_version.encode()).hexdigest()
+    # Verifique se o arquivo local tem a mesma versão do GitHub
+    with open(local_path, 'r', encoding='utf-8') as f:
+        local_version = f.read()
 
-if local_hash != github_hash:
-    # Baixe a nova versão do GitHub e salve-a localmente
-    with open(local_path, 'w', encoding='utf-8') as f:
-        f.write(github_version)
-    console.print("[bold green]BOT atualizado.\nAbra novamente o bot.[/]")
-    time.sleep(100)
-else:
-    pass
+    local_hash = hashlib.sha256(local_version.encode()).hexdigest()
+    github_hash = hashlib.sha256(github_version.encode()).hexdigest()
+
+    if local_hash != github_hash:
+        # Baixe a nova versão do GitHub e salve-a localmente
+        with open(local_path, 'w', encoding='utf-8') as f:
+            f.write(github_version)
+        console.print("[bold green]BOT atualizado.[/]")
+        # Reinicie o arquivo Python para carregar as atualizações
+        os.execv(__file__, sys.argv)
+    else:
+        pass
 
 
 from rich.console import Console
