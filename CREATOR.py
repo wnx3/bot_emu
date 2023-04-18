@@ -308,7 +308,7 @@ def gerar_email():
     global sms
     global email
     lista_user = random.choices(range(1, 9), k=3)
-    fake = Faker()
+    fake = Faker('pt_BR')
     nome = fake.first_name_female()
     sobrenome = fake.last_name_female()
     nome_completo = nome + ' ' + sobrenome
@@ -555,7 +555,7 @@ def gerar_email_firts_reg():
     global numeros_concatenados
     global user_completo
     lista_user = random.choices(range(1, 9), k=3)
-    fake = Faker()
+    fake = Faker('pt_BR')
     nome = fake.first_name_female()
     sobrenome = fake.last_name_female()
     nome_completo = nome + ' ' + sobrenome
@@ -1003,7 +1003,7 @@ while cont is True:
                                                                             '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]'))).click()
                 # Gerar nome de usuário, digitar no campo e clicar em avançae
                 lista_user = random.choices(range(1, 9), k=3)
-                fake = Faker()
+                fake = Faker('pt_BR')
                 nome = fake.first_name_female()
                 sobrenome = fake.last_name_female()
                 nome_completo = nome + sobrenome
