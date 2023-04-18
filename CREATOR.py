@@ -1,5 +1,5 @@
 try:
-    from faker import Faker
+    from rich.console import Console
 except ModuleNotFoundError:
     import subprocess
     import sys
@@ -15,8 +15,7 @@ import requests
 import hashlib
 import subprocess
 from colorama import init, Fore, Back, Style
-from rich.console import Console
-
+from faker import Faker
 # teste
 
 console = Console()
@@ -24,7 +23,7 @@ console = Console()
 base_url = 'https://raw.githubusercontent.com/wnx3/bot_emu/main/'
 
 # Lista de arquivos que você deseja verificar e atualizar
-file_list = ['CREATOR.py', 'relatorio.json']
+file_list = ['CREATOR.py', 'relatorio.json', 'requirements.txt']
 
 for file_name in file_list:
     # Caminho local do seu arquivo Python
