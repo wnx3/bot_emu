@@ -4,6 +4,13 @@ import requests
 import hashlib
 import subprocess
 
+# verifica se o arquivo existe na pasta do bot
+if not os.path.exists("relatorio.json"):
+    # se o arquivo não existe, pede o nome do arquivo ao usuário e armazena em uma variável global
+    with open("relatorio.json", "w") as f:
+        pass
+else:
+    pass
 base_url = 'https://raw.githubusercontent.com/wnx3/bot_emu/main/'
 
 # Lista de arquivos que você deseja verificar e atualizar
