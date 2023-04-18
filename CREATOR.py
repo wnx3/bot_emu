@@ -673,13 +673,13 @@ def firts_reg():
         try:
             WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,
                                                                         '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[2]/android.view.View'))).click()
-            time.sleep(3)
+            time.sleep(5)
             WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,
                                                                         '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[2]'))).click()
-            time.sleep(1)
+            time.sleep(3)
             gerar_email_firts_reg()
         except Exception as e:
-            pass
+            gerar_email_firts_reg()
 
 
         print('Nome escolhido: ' + nome_completo)
