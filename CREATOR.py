@@ -31,7 +31,7 @@ for file_name in file_list:
         # Baixe a nova versão do GitHub e salve-a localmente
         with open(local_path, 'w', encoding='utf-8') as f:
             f.write(github_version)
-        print("[bold green]BOT atualizado.\nAbra novamente.[/]")
+        print("BOT atualizado.\nAbra novamente.")
         time.sleep(100)
     else:
         pass
