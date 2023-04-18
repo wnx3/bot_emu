@@ -1,23 +1,3 @@
-try:
-    from rich.console import Console
-except ModuleNotFoundError:
-    import subprocess
-    import sys
-
-    subprocess.run(['venv/scripts/activate.bat'], shell=True)
-    print('Instalando dependências...')
-    subprocess.run(['pip', 'install', '-r', 'requirements.txt'])
-    subprocess.run(['deactivate'], shell=True)
-    from faker import Faker
-import os
-import time
-import requests
-import hashlib
-import subprocess
-from colorama import init, Fore, Back, Style
-from faker import Faker
-# teste
-
 console = Console()
 
 base_url = 'https://raw.githubusercontent.com/wnx3/bot_emu/main/'
@@ -51,6 +31,28 @@ for file_name in file_list:
         time.sleep(100)
     else:
         pass
+
+try:
+    from rich.console import Console
+except ModuleNotFoundError:
+    import subprocess
+    import sys
+
+    subprocess.run(['venv/scripts/activate.bat'], shell=True)
+    print('Instalando dependências...')
+    subprocess.run(['pip', 'install', '-r', 'requirements.txt'])
+    subprocess.run(['deactivate'], shell=True)
+    from rich.console import Console
+import os
+import time
+import requests
+import hashlib
+import subprocess
+from colorama import init, Fore, Back, Style
+from faker import Faker
+# teste
+
+
 
 
 from rich.console import Console
