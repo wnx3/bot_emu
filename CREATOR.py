@@ -1,4 +1,4 @@
-console = Console()
+
 
 base_url = 'https://raw.githubusercontent.com/wnx3/bot_emu/main/'
 
@@ -52,7 +52,7 @@ from colorama import init, Fore, Back, Style
 from faker import Faker
 # teste
 
-
+console = Console()
 
 
 from rich.console import Console
