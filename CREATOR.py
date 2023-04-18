@@ -887,6 +887,10 @@ while cont is True:
         #               stderr=subprocess.DEVNULL)
 
         try:
+            cookies = driver.find_elements(By.ID, 'com.android.packageinstaller:id/permission_deny_button')
+            if len(cookies) == 1:
+                driver.find_element(By.ID, 'com.android.packageinstaller:id/permission_deny_button').click()
+                time.sleep(1)
             firts_reg()
 
         except Exception as e:
