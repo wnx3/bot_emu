@@ -1108,8 +1108,6 @@ while cont is True:
                     try:
                         with open("configuracoes/vpn/vpn.txt", "r") as arquivo:
                             conteudo = arquivo.read().strip()
-
-                        # Executa a função correspondente ao conteúdo do arquivo
                         if conteudo == "avg":
                             vpn_avg()
                         elif conteudo == "surf":
@@ -1128,8 +1126,6 @@ while cont is True:
                         sms = True
             except:
                 sms = True
-    # finally:
-    #    print('')
     except Exception as e:
         logger.error('Ocorreu um erro: %s', e)
         subprocess.run(f'adb -s 127.0.0.1:{porta} shell input keyevent KEYCODE_HOME', stdout=subprocess.DEVNULL,
