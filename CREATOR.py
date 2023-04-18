@@ -24,7 +24,7 @@ console = Console()
 base_url = 'https://raw.githubusercontent.com/wnx3/bot_emu/main/'
 
 # Lista de arquivos que você deseja verificar e atualizar
-file_list = ['CREATOR.py', 'relatorio.py']
+file_list = ['CREATOR.py', 'relatorio.json']
 
 for file_name in file_list:
     # Caminho local do seu arquivo Python
