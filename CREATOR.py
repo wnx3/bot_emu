@@ -662,8 +662,6 @@ def firts_reg():
         except Exception as e:
             pass
 
-            # Gerar nome de usuário, digitar no campo e clicar em avançae
-            # nome_completo = nome + ' ' + sobrenome
 
         print('Nome escolhido: ' + nome_completo)
         try:
@@ -998,7 +996,7 @@ while cont is True:
 
                 time.sleep(5)
                 gerar_email()
-                WebDriverWait(driver, 40).until(EC.visibility_of_element_located((By.XPATH,
+                WebDriverWait(driver, 39).until(EC.visibility_of_element_located((By.XPATH,
                                                                                   '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[2]'))).click()
 
                 print('Verificando...')
