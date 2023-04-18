@@ -1065,21 +1065,21 @@ while cont is True:
                     
 
                     creds = Credentials.from_authorized_user_file('relatorio.json', SCOPES)
-                service = build('sheets', 'v4', credentials=creds)
-                # Get values of columns A and B
-                result = service.spreadsheets().values().get(spreadsheetId='1dA96HvQ8_i5Ybn8daBrffmhwwAjBmsTbrivGMxlJMa4', range=RANGE_NAME).execute()
-                values = result.get('values', [])
-                # Find first empty row
-                first_empty_row_index = len(values) + 1
-                # Insert user, password, and timestamp into first empty row
-                range_to_update = f'relatorio_geral!A{first_empty_row_index}:D{first_empty_row_index}'
-                value_input_option = 'USER_ENTERED'
-                value_range_body = {'values': [[user_completo + ' ' + senha, email, timestamp, maquina]]}
-                result = service.spreadsheets().values().update(
-                    spreadsheetId='1dA96HvQ8_i5Ybn8daBrffmhwwAjBmsTbrivGMxlJMa4',
-                    range=range_to_update,
-                    valueInputOption=value_input_option,
-                    body=value_range_body).execute()
+                    service = build('sheets', 'v4', credentials=creds)
+                    # Get values of columns A and B
+                    result = service.spreadsheets().values().get(spreadsheetId='1dA96HvQ8_i5Ybn8daBrffmhwwAjBmsTbrivGMxlJMa4', range=RANGE_NAME).execute()
+                    values = result.get('values', [])
+                    # Find first empty row
+                    first_empty_row_index = len(values) + 1
+                    # Insert user, password, and timestamp into first empty row
+                    range_to_update = f'relatorio_geral!A{first_empty_row_index}:D{first_empty_row_index}'
+                    value_input_option = 'USER_ENTERED'
+                    value_range_body = {'values': [[user_completo + ' ' + senha, email, timestamp, maquina]]}
+                    result = service.spreadsheets().values().update(
+                        spreadsheetId='1dA96HvQ8_i5Ybn8daBrffmhwwAjBmsTbrivGMxlJMa4',
+                        range=range_to_update,
+                        valueInputOption=value_input_option,
+                        body=value_range_body).execute()
 
                     arquivo = open('configuracoes/contas/contas_criadas.txt', 'a')  # Escreva mais conteúdo no arquivo
                     arquivo.write(user_completo + ' ' + senha + "\n")
@@ -1088,7 +1088,7 @@ while cont is True:
                     arquivo.write(email + '\n' + user_completo + '\n' + senha + "\n\n")
                     WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,
                                                                                 '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[*]/android.view.ViewGroup[10]'))).click()
-
+    
                     sms = False
 
                 else:
