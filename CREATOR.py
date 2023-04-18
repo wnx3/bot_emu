@@ -120,16 +120,16 @@ def vpn_nord():
     except:
         pass
     time.sleep(10)
-    try:
-        WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.ID, 'com.nordvpn.android:id/reconnect_button'))).click()
-    except:
-        pass
-    try:
-        WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.ID, 'com.nordvpn.android:id/secondary_quick_connect_button'))).click()
-    except:
-        pass
+    #try:
+    #    WebDriverWait(driver, 10).until(
+    #        EC.element_to_be_clickable((By.ID, 'com.nordvpn.android:id/reconnect_button'))).click()
+    #except:
+    #    pass
+    #try:
+    #    WebDriverWait(driver, 10).until(
+    #        EC.element_to_be_clickable((By.ID, 'com.nordvpn.android:id/secondary_quick_connect_button'))).click()
+    #except:
+    #    pass
     WebDriverWait(driver, 30).until(
         EC.element_to_be_clickable((By.ID, 'com.nordvpn.android:id/primary_quick_connect_button'))).click()
     time.sleep(5)
