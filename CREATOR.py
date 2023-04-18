@@ -16,7 +16,7 @@ import hashlib
 import subprocess
 from colorama import init, Fore, Back, Style
 from rich.console import Console
-
+#
 console = Console()
 
 # URL do arquivo no seu repositório GitHub
